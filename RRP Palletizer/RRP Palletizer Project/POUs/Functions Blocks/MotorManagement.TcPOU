@@ -7,6 +7,7 @@
 //Test Commit4 tgl18/04/2024
 //Test Commit5
 //Test Commit6
+//Test Commit7 - Arif
 FUNCTION_BLOCK MotorManagement
 VAR_IN_OUT
 	Motor	: stMotor;
