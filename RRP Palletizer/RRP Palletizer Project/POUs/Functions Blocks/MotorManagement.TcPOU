@@ -4,6 +4,7 @@
     <Declaration><![CDATA[//Test Commit tgl18/04/2024
 //Test Commit2 tgl18/04/2024
 //Test Commit3 tgl18/04/2024
+//Test Commit4 tgl18/04/2024
 FUNCTION_BLOCK MotorManagement
 VAR_IN_OUT
 	Motor	: stMotor;
