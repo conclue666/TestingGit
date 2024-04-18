@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <GVL Name="InputOutput_GVL" Id="{52a4a280-937d-46a6-b29a-d25c5f1a64e8}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	//Panel 1
+	//Digital Input 16 Point EL1809
+	xIn1000				AT 		%I*			: BOOL;		// Push Button Run at Main Panel
+	xIn1001				AT 		%I*			: BOOL;		// Push Button Stop at Main Panel
+	xIn1002				AT 		%I*			: BOOL;		// Push Button Alarm Reset at Main Panel
+	xIn1003				AT 		%I*			: BOOL;		// Push Button Acknowledge at Main Panel
+	xIn1004				AT 		%I*			: BOOL;		// Auto/Manual Mode at Main Panel
+	xIn1005				AT 		%I*			: BOOL;		// Emergency Stop at Main Panel
+	xIn1006				AT 		%I*			: BOOL;		//	
+	xIn1007				AT 		%I*			: BOOL;		//
+	xIn1008				AT 		%I*			: BOOL;		//
+	xIn1009				AT 		%I*			: BOOL;		//
+	xIn1010				AT 		%I*			: BOOL;		//
+	xIn1011				AT 		%I*			: BOOL;		//
+	xIn1012				AT 		%I*			: BOOL;		//
+	xIn1013				AT 		%I*			: BOOL;		//
+	xIn1014				AT 		%I*			: BOOL;		//
+	xIn1015				AT 		%I*			: BOOL;		// Pressure Switch
+	//Digital Input 16 Point EL1809
+	xIn1100				AT 		%I*			: BOOL;		// Feedback Barcoder Reading Conveyor is Running
+	xIn1101				AT 		%I*			: BOOL;		// Feedback Box Infeed Roller Conveyor 1 is Running
+	xIn1102				AT 		%I*			: BOOL;		// Feedback Box Infeed Roller Conveyor 2 is Running 
+	xIn1103				AT 		%I*			: BOOL;		// Feedback Box Infeed Roller Conveyor 3 is Running
+	xIn1104				AT 		%I*			: BOOL;		// Feedback Box Buffer Roller Conveyor 1 is Running
+	xIn1105				AT 		%I*			: BOOL;		// Feedback Box Buffer Roller Conveyor 2 is Running
+	xIn1106				AT 		%I*			: BOOL;		// Feedback Box Stop & Go Belt Conveyor is Running
+	xIn1107				AT 		%I*			: BOOL;		// Feedback Box Picking Roller Conveyor is Running
+	xIn1108				AT 		%I*			: BOOL;		//
+	xIn1109				AT 		%I*			: BOOL;		//
+	xIn1110				AT 		%I*			: BOOL;		//
+	xIn1111				AT 		%I*			: BOOL;		//
+	xIn1112				AT 		%I*			: BOOL;		//
+	xIn1113				AT 		%I*			: BOOL;		//
+	xIn1114				AT 		%I*			: BOOL;		//
+	xIn1115				AT 		%I*			: BOOL;		// 
+	//Digital Input 16 Point EL1809
+	xIn1200				AT 		%I*			: BOOL;		// RSW to Check Pneu Box Pusher for Reject Barcode when Rtc
+	xIn1201				AT 		%I*			: BOOL;		// RSW to Check Pneu Box Pusher for Reject Barcode when Adv
+	xIn1202				AT 		%I*			: BOOL;		// RSW to Check Pneu Box Pusher for Reject Weight when Rtc
+	xIn1203				AT 		%I*			: BOOL;		// RSW to Check Pneu Box Pusher for Reject Weight when Adv
+	xIn1204				AT 		%I*			: BOOL;		// RSW to Check Pneu Box Pusher when Rtc
+	xIn1205				AT 		%I*			: BOOL;		// RSW to Check Pneu Box Pusher when Adv
+	xIn1206				AT 		%I*			: BOOL;		//	
+	xIn1207				AT 		%I*			: BOOL;		//
+	xIn1208				AT 		%I*			: BOOL;		//
+	xIn1209				AT 		%I*			: BOOL;		//
+	xIn1210				AT 		%I*			: BOOL;		//
+	xIn1211				AT 		%I*			: BOOL;		//
+	xIn1212				AT 		%I*			: BOOL;		//
+	xIn1213				AT 		%I*			: BOOL;		//
+	xIn1214				AT 		%I*			: BOOL;		//
+	xIn1215				AT 		%I*			: BOOL;		// 
+	//Digital Input 16 Point EL1809
+	xIn1300				AT 		%I*			: BOOL;		// PSR Back to Detect Box at Barcoder Reading Conv
+	xIn1301				AT 		%I*			: BOOL;		// PSR Middle to Detect Box at Barcoder Reading Conv
+	xIn1302				AT 		%I*			: BOOL;		// PSR Front to Detect Box at Barcoder Reading Conv
+	xIn1303				AT 		%I*			: BOOL;		// PSR to Detect Box at Outfeed Check Weigher
+	xIn1304				AT 		%I*			: BOOL;		// PSR to Detect Box at Reject Barcode
+	xIn1305				AT 		%I*			: BOOL;		// PSR to Detect Box at Reject Weight
+	xIn1306				AT 		%I*			: BOOL;		// PSR to Detect Box for Buffer at Infeed Roller Conv
+	xIn1307				AT 		%I*			: BOOL;		// PSR to Detect Box for Pusher at Infeed Roller Conv
+	xIn1308				AT 		%I*			: BOOL;		// PSR to Detect Box at Buffer Roller Conv 1
+	xIn1309				AT 		%I*			: BOOL;		// PSR to Detect Box at Buffer Roller Conv 2
+	xIn1310				AT 		%I*			: BOOL;		// PSR to Detect Box at Stop & Go Belt Conv
+	xIn1311				AT 		%I*			: BOOL;		// PSR to Detect Box at Picking Conv
+	xIn1312				AT 		%I*			: BOOL;		// PSR to Detect Box at Gravity Roller Conv
+	xIn1313				AT 		%I*			: BOOL;		// PSR to Detect Box at Gravity Roller Conv
+	xIn1314				AT 		%I*			: BOOL;		// PSR to Detect Box at Gravity Roller Conv Reject
+	xIn1315				AT 		%I*			: BOOL;		// PSR to Detect Box at Gravity Roller Conv Reject
+	//Safety Input SI 4 Point EL1904
+	xsIn1400			AT 		%I*			: BOOL;		// Emergency Stop Channel 1 at Main Panel
+	xsIn1402			AT 		%I*			: BOOL;		// Emergency Stop Channel 2 at Main Panel
+	xsIn1404			AT 		%I*			: BOOL;		// Auto Machine at Main Panel
+	xsIn1406			AT 		%I*			: BOOL;		// Manual Machine at Main Panel
+	//Panel 2
+	//Digital Input 16 Point EL1809
+	xIn3000				AT 		%I*			: BOOL;		//Push Button Run at P2
+	xIn3001				AT 		%I*			: BOOL;		// Push Button Stop at P2
+	xIn3002				AT 		%I*			: BOOL;		// Push Button Alarm Reset at P2
+	xIn3003				AT 		%I*			: BOOL;		// Emergency Stop at P2
+	xIn3004				AT 		%I*			: BOOL;		// Push Button Run at Dispenser
+	xIn3005				AT 		%I*			: BOOL;		// Push Button Stop at Dispenser
+	xIn3006				AT 		%I*			: BOOL;		// Push Button Alarm Reset at Dispenser
+	xIn3007				AT 		%I*			: BOOL;		// Push Button Acknowledge at Dispenser
+	xIn3008				AT 		%I*			: BOOL;		// Auto/Manual Switch at Dispenser
+	xIn3009				AT 		%I*			: BOOL;		// Emergency Stop at Dispenser
+	xIn3010				AT 		%I*			: BOOL;		// Manual Switch For Test Pneumatic Vertical UP
+	xIn3011				AT 		%I*			: BOOL;		// Manual Switch For Test Pneumatic Vertical DOWN
+	xIn3012				AT 		%I*			: BOOL;		// Manual Switch for Test Pneumatic Horizontal
+	xIn3013				AT 		%I*			: BOOL;		// Manual Switch for Test Motor Empty Stacks Pallet Infeed Roller Conv
+	xIn3014				AT 		%I*			: BOOL;		// Manual Switch for Test Motor Automatic Pallet Roller Conv
+	xIn3015				AT 		%I*			: BOOL;		// Pressure Switch for Pallet Dispenser
+	//Digital Input 16 Point EL1809
+	xIn3100				AT 		%I*			: BOOL;		// Feedback Empty stacks pallet infeed roller conv is Running
+	xIn3101				AT 		%I*			: BOOL;		// Feedback Automatic pallet roller conv is Running
+	xIn3102				AT 		%I*			: BOOL;		// Feedback Box placing at pallet roller conv L1 is Running
+	xIn3103				AT 		%I*			: BOOL;		// Feedback Box placing at pallet roller conv L2 is Running
+	xIn3104				AT 		%I*			: BOOL;		// Feedback Box placing at pallet roller conv L3 is Running
+	xIn3105				AT 		%I*			: BOOL;		// Feedback Box placing at pallet roller conv L4 is Running
+	xIn3106				AT 		%I*			: BOOL;		// Feedback  Empty & Load pallet transfer roller conv is Running
+	xIn3107				AT 		%I*			: BOOL;		// Feedback Empty & Loaded pallet turning conv 1 is Running
+	xIn3108				AT 		%I*			: BOOL;		// Feedback Empty & Loaded pallet turning conv 2 is Running
+	xIn3109				AT 		%I*			: BOOL;		// Feedback Loaded Pallet buffer roller conv before Wrapping is Running
+	xIn3110				AT 		%I*			: BOOL;		// Feedback Loaded Pallet buffer roller conv after Wrapping is Running
+	xIn3111				AT 		%I*			: BOOL;		// Feedback Loaded pallet outfeed roller conv is Running
+	xIn3112				AT 		%I*			: BOOL;		// 
+	xIn3113				AT 		%I*			: BOOL;		// 
+	xIn3114				AT 		%I*			: BOOL;		// 
+	xIn3115				AT 		%I*			: BOOL;		// 
+	//Digital Input 16 Point EL1809
+	xIn3200				AT 		%I*			: BOOL;		// PSR Back at Placing Conv L1
+	xIn3201				AT 		%I*			: BOOL;		// PSR Front at Placing Conv L1
+	xIn3202				AT 		%I*			: BOOL;		// PSR Back at Placing Conv L2
+	xIn3203				AT 		%I*			: BOOL;		// PSR Front at Placing Conv L2
+	xIn3204				AT 		%I*			: BOOL;		// PSR Back at Placing Conv L3
+	xIn3205				AT 		%I*			: BOOL;		// PSR Front at Placing Conv L3
+	xIn3206				AT 		%I*			: BOOL;		// PSR Back at Placing Conv L4
+	xIn3207				AT 		%I*			: BOOL;		// PSR Front at Placing Conv L4
+	xIn3208				AT 		%I*			: BOOL;		// PSR Back at Empty & Load pallet transfer roller conv L4
+	xIn3209				AT 		%I*			: BOOL;		// PSR Front at Empty & Load pallet transfer roller conv L4
+	xIn3210				AT 		%I*			: BOOL;		// PSR Back at Empty & Loaded pallet turning conv
+	xIn3211				AT 		%I*			: BOOL;		// PSR Front at Empty & Loaded pallet turning conv
+	xIn3212				AT 		%I*			: BOOL;		// PSR Back at Loaded Pallet buffer roller conv before Wrapping
+	xIn3213				AT 		%I*			: BOOL;		// PSR Front at Loaded Pallet buffer roller conv before Wrapping
+	xIn3214				AT 		%I*			: BOOL;		// PSR Back at Loaded Pallet buffer roller conv after Wrapping
+	xIn3215				AT 		%I*			: BOOL;		// PSR Front at Loaded Pallet buffer roller conv after Wrapping
+	//Digital Input 16 Point EL1809
+	xIn3300				AT 		%I*			: BOOL;		// PSR Back at Loaded pallet outfeed roller conv
+	xIn3301				AT 		%I*			: BOOL;		// PSR Front at Loaded pallet outfeed roller conv
+	xIn3302				AT 		%I*			: BOOL;		// 
+	xIn3303				AT 		%I*			: BOOL;		// 
+	xIn3304				AT 		%I*			: BOOL;		// 
+	xIn3305				AT 		%I*			: BOOL;		// 
+	xIn3306				AT 		%I*			: BOOL;		// 
+	xIn3307				AT 		%I*			: BOOL;		// 
+	xIn3308				AT 		%I*			: BOOL;		// PRX 1 at Empty & Loaded pallet turning conv
+	xIn3309				AT 		%I*			: BOOL;		// PRX 2 at Empty & Loaded pallet turning conv
+	xIn3310				AT 		%I*			: BOOL;		// PRX 3 at Empty & Loaded pallet turning conv
+	xIn3311				AT 		%I*			: BOOL;		// 
+	xIn3312				AT 		%I*			: BOOL;		// 
+	xIn3313				AT 		%I*			: BOOL;		// 
+	xIn3314				AT 		%I*			: BOOL;		// 
+	xIn3315				AT 		%I*			: BOOL;		// 
+	//Digital Input 16 Point EL1809
+	xIn3400				AT 		%I*			: BOOL;		// PSR to Check Back Pallet at Empty stacks pallet infeed roller conv
+	xIn3401				AT 		%I*			: BOOL;		// PSR to Check Front Pallet at Empty stacks pallet infeed roller conv
+	xIn3402				AT 		%I*			: BOOL;		// PSR to Check Back Pallet at Automatic pallet roller conv
+	xIn3403				AT 		%I*			: BOOL;		// PSR to Check Front Pallet at Automatic pallet roller conv
+	xIn3404				AT 		%I*			: BOOL;		// PSR to Check Stack Pallet at Automatic pallet roller conv
+	xIn3405				AT 		%I*			: BOOL;		// RSW to Check Right Pneumatic Horizontal When Retract
+	xIn3406				AT 		%I*			: BOOL;		// RSW to Check Right Pneumatic Horizontal When Advanced
+	xIn3407				AT 		%I*			: BOOL;		// RSW to Check Left Pneumatic Horizontal When Retract
+	xIn3408				AT 		%I*			: BOOL;		// RSW to Check Left Pneumatic Horizontal When Advanced
+	xIn3409				AT 		%I*			: BOOL;		// Proximity Sensor at Retract Position Left Pneumatic Vertical
+	xIn3410				AT 		%I*			: BOOL;		// PRX at Middle Position Left Pneumatic Vertical
+	xIn3411				AT 		%I*			: BOOL;		// PRX at Advanced Position Left Pneumatic Vertical
+	xIn3412				AT 		%I*			: BOOL;		// PRX at Retract Position Right Pneumatic Vertical
+	xIn3413				AT 		%I*			: BOOL;		// PRX at Middle Position Right Pneumatic Vertical
+	xIn3414				AT 		%I*			: BOOL;		// PRX at Advanced Position Right Pneumatic Vertical
+	xIn3415				AT 		%I*			: BOOL;		// 
+	//Digital Input 16 Point EL1809
+	xIn3500				AT 		%I*			: BOOL;		// 
+	xIn3501				AT 		%I*			: BOOL;		// 
+	xIn3502				AT 		%I*			: BOOL;		// 
+	xIn3503				AT 		%I*			: BOOL;		// 
+	xIn3504				AT 		%I*			: BOOL;		// 
+	xIn3505				AT 		%I*			: BOOL;		// 
+	xIn3506				AT 		%I*			: BOOL;		// 
+	xIn3507				AT 		%I*			: BOOL;		// 
+	xIn3508				AT 		%I*			: BOOL;		// 
+	xIn3509				AT 		%I*			: BOOL;		// 
+	xIn3510				AT 		%I*			: BOOL;		// 
+	xIn3511				AT 		%I*			: BOOL;		// 
+	xIn3512				AT 		%I*			: BOOL;		// 
+	xIn3513				AT 		%I*			: BOOL;		// 
+	xIn3514				AT 		%I*			: BOOL;		// 
+	xIn3515				AT 		%I*			: BOOL;		// 
+	//Safety Input SI 4 Point EL1904
+	xsIn3600			AT 		%I*			: BOOL;		// Emergency Stop at Channel 1
+	xsIn3602			AT 		%I*			: BOOL;		// Emergency Stop at Channel 2
+	xsIn3604			AT 		%I*			: BOOL;		// Safety Door Solenoid Channel 1
+	xsIn3606			AT 		%I*			: BOOL;		// Safety Door Solenoid Channel 2
+	//Safety Input SI 4 Point EL1904
+	xsIn3700			AT 		%I*			: BOOL;		// Light Curtain Channel 1 at Dispenser
+	xsIn3702			AT 		%I*			: BOOL;		// Light Curtain Channel 2 at Dispenser
+	xsIn3704			AT 		%I*			: BOOL;		// Light Curtain Channel 1 at Loaded Outfeed
+	xsIn3706			AT 		%I*			: BOOL;		// Light Curtain Channel 2 at Loaded Outfeed
+	//Panel 3
+	//Digital Input 16 Point EL1809
+	xIn5000				AT 		%I*			: BOOL;		// Feedback Empty pallet shuttle is Running
+	xIn5001				AT 		%I*			: BOOL;		// Feedback Load pallet shuttle is Running
+	xIn5002				AT 		%I*			: BOOL;		// Feedback Drive Shuttle is Running
+	xIn5003				AT 		%I*			: BOOL;		// 
+	xIn5004				AT 		%I*			: BOOL;		// PSR To Detect Front Pallet at Empty Pallet Shuttle
+	xIn5005				AT 		%I*			: BOOL;		// PSR To Detect Back Pallet at Empty Pallet Shuttle
+	xIn5006				AT 		%I*			: BOOL;		// PSR To Detect End Of Front Pallet at Empty Pallet Shuttle
+	xIn5007				AT 		%I*			: BOOL;		// PSR To Detect End Of Back Pallet at Empty Pallet Shuttle
+	xIn5008				AT 		%I*			: BOOL;		// PSR To Detect Front Pallet at Load Pallet Shuttle
+	xIn5009				AT 		%I*			: BOOL;		// PSR To Detect Back Pallet at Load Pallet Shuttle
+	xIn5010				AT 		%I*			: BOOL;		// PSR To Detect End Of Front Pallet at Load Pallet Shuttle
+	xIn5011				AT 		%I*			: BOOL;		// PSR To Detect End Of Back Pallet at Load Pallet Shuttle
+	xIn5012				AT 		%I*			: BOOL;		// Limit Switch To Detect Left Limit Area
+	xIn5013				AT 		%I*			: BOOL;		// Limit Switch To Detect Right Limit Area
+	xIn5014				AT 		%I*			: BOOL;		// PRX to Detect Left Limit Area
+	xIn5015				AT 		%I*			: BOOL;		// PRX to Detect Right Limit Area
+	//Gripper Robot
+	//Digital Input 16 Point
+	xIn_0				AT 		%I*			: BOOL;		// RSW to Check Open Claw Box
+	xIn_1				AT 		%I*			: BOOL;		// RSW to Check Close Claw Box
+	xIn_2				AT 		%I*			: BOOL;		// RSW to Check Open Clamping Box
+	xIn_3				AT 		%I*			: BOOL;		// RSW to Check Close Clamping Box
+	xIn_4				AT 		%I*			: BOOL;		// PSR to Check Box at Gripper
+	xIn_5				AT 		%I*			: BOOL;		// 
+	xIn_6				AT 		%I*			: BOOL;		// 
+	xIn_7				AT 		%I*			: BOOL;		// 
+	xIn_8				AT 		%I*			: BOOL;		// 
+	xIn_9				AT 		%I*			: BOOL;		// 
+	xIn_10				AT 		%I*			: BOOL;		// 
+	xIn_11				AT 		%I*			: BOOL;		// 
+	xIn_12				AT 		%I*			: BOOL;		// 
+	xIn_13				AT 		%I*			: BOOL;		// 
+	xIn_14				AT 		%I*			: BOOL;		// 
+	xIn_15				AT 		%I*			: BOOL;		// 
+	//Panel 1
+	//Digital Output 16 Point EL2809
+	xOut2000			AT 		%Q*			: BOOL;		// Indicator Machine Running at Main Panel
+	xOut2001			AT 		%Q*			: BOOL;		// Indicator Machine Error at Main Panel
+	xOut2002			AT 		%Q*			: BOOL;		// Indicator Acknowledge at Main Panel
+	xOut2003			AT 		%Q*			: BOOL;		// Indicator Auto Mode
+	xOut2004			AT 		%Q*			: BOOL;		// Indicator Manual Mode
+	xOut2005			AT 		%Q*			: BOOL;		// Indicator Tower Lamp Red
+	xOut2006			AT 		%Q*			: BOOL;		// Indicator Tower Lamp Yellow
+	xOut2007			AT 		%Q*			: BOOL;		// Indicator Tower Lamp Green
+	xOut2008			AT 		%Q*			: BOOL;		// Indicator Tower Lamp Blue
+	xOut2009			AT 		%Q*			: BOOL;		// Indicator Buzzer
+	xOut2010			AT 		%Q*			: BOOL;		//
+	xOut2011			AT 		%Q*			: BOOL;		//
+	xOut2012			AT 		%Q*			: BOOL;		//
+	xOut2013			AT 		%Q*			: BOOL;		//
+	xOut2014			AT 		%Q*			: BOOL;		//
+	xOut2015			AT 		%Q*			: BOOL;		// 
+	//Digital Output 16 Point EL2809
+	xOut2100			AT 		%Q*			: BOOL;		// Move Forward for Barcoder Reading Conveyor
+	xOut2101			AT 		%Q*			: BOOL;		// Move Forward for Box Infeed Roller Conveyor 1
+	xOut2102			AT 		%Q*			: BOOL;		// Move Forward for Box Infeed Roller Conveyor 2
+	xOut2103			AT 		%Q*			: BOOL;		// Move Forward for Box Infeed Roller Conveyor 3
+	xOut2104			AT 		%Q*			: BOOL;		// Move Forward for Box Buffer Roller Conveyor 1
+	xOut2105			AT 		%Q*			: BOOL;		// Move Forward for Box Buffer Roller Conveyor 2
+	xOut2106			AT 		%Q*			: BOOL;		// Move Forward for Box Stop & Go Belt Conveyor
+	xOut2107			AT 		%Q*			: BOOL;		// Move Forward for Box Picking Roller Conveyor
+	xOut2108			AT 		%Q*			: BOOL;		//
+	xOut2109			AT 		%Q*			: BOOL;		//
+	xOut2110			AT 		%Q*			: BOOL;		//
+	xOut2111			AT 		%Q*			: BOOL;		//
+	xOut2112			AT 		%Q*			: BOOL;		//
+	xOut2113			AT 		%Q*			: BOOL;		//
+	xOut2114			AT 		%Q*			: BOOL;		//
+	xOut2115			AT 		%Q*			: BOOL;		// Reset Error for All Inverter at Main Panel, Relay
+	//Digital Output 16 Point EL2809
+	xOut2200			AT 		%Q*			: BOOL;		// Pneumatic Box Pusher for Reject Barcode
+	xOut2201			AT 		%Q*			: BOOL;		// Pneumatic Box Pusher for Reject Weight
+	xOut2202			AT 		%Q*			: BOOL;		// Pneumatic Box Pusher
+	xOut2203			AT 		%Q*			: BOOL;		// 
+	xOut2204			AT 		%Q*			: BOOL;		// 
+	xOut2205			AT 		%Q*			: BOOL;		// 
+	xOut2206			AT 		%Q*			: BOOL;		//	
+	xOut2207			AT 		%Q*			: BOOL;		//
+	xOut2208			AT 		%Q*			: BOOL;		//
+	xOut2209			AT 		%Q*			: BOOL;		//
+	xOut2210			AT 		%Q*			: BOOL;		//
+	xOut2211			AT 		%Q*			: BOOL;		//
+	xOut2212			AT 		%Q*			: BOOL;		//
+	xOut2213			AT 		%Q*			: BOOL;		//
+	xOut2214			AT 		%Q*			: BOOL;		//
+	xOut2215			AT 		%Q*			: BOOL;		// 
+	//Safety Output SO 4 Point EL2904
+	xsOut2300			AT 		%Q*			: BOOL;		// Enable STO Conveyor Channel 1
+	xsOut2302			AT 		%Q*			: BOOL;		// Enable STO Conveyor Channel 2
+	xsOut2304			AT 		%Q*			: BOOL;		// Enable Air Supply Channel 1
+	xsOut2306			AT 		%Q*			: BOOL;		// Enable Air Supply Channel 2
+	//Panel 2
+	//Digital Output 16 Point EL2809
+	xOut4000			AT 		%Q*			: BOOL;		// Indicator Machine Running at P2
+	xOut4001			AT 		%Q*			: BOOL;		// Indicator Machine Error at P2
+	xOut4002			AT 		%Q*			: BOOL;		// Indicator Tower Lamp Red at P2
+	xOut4003			AT 		%Q*			: BOOL;		// Indicator Tower Lamp Yellow at P2
+	xOut4004			AT 		%Q*			: BOOL;		// Indicator Tower Lamp Green at P2
+	xOut4005			AT 		%Q*			: BOOL;		// Indicator Tower Lamp Blue at P2
+	xOut4006			AT 		%Q*			: BOOL;		// Indicator Buzzer at P2
+	xOut4007			AT 		%Q*			: BOOL;		// Indicator Machine Running at Dispenser
+	xOut4008			AT 		%Q*			: BOOL;		// Indicator Machine Error at Dispenser
+	xOut4009			AT 		%Q*			: BOOL;		// Indicator Acknowledge at Dispenser
+	xOut4010			AT 		%Q*			: BOOL;		// Indicator Auto at Dispenser
+	xOut4011			AT 		%Q*			: BOOL;		// Indicator Manual at Dispenser
+	xOut4012			AT 		%Q*			: BOOL;		//
+	xOut4013			AT 		%Q*			: BOOL;		//
+	xOut4014			AT 		%Q*			: BOOL;		//
+	xOut4015			AT 		%Q*			: BOOL;		// 
+	//Digital Output 16 Point EL2809
+	xOut4100			AT 		%Q*			: BOOL;		// Move Forward for Empty stacks pallet infeed roller conv
+	xOut4101			AT 		%Q*			: BOOL;		// Move Forward for Automatic pallet roller conv
+	xOut4102			AT 		%Q*			: BOOL;		// Move Forward for Box placing at pallet roller conv L1
+	xOut4103			AT 		%Q*			: BOOL;		// Move Forward for Box placing at pallet roller conv L2
+	xOut4104			AT 		%Q*			: BOOL;		// Move Forward for Box placing at pallet roller conv L3
+	xOut4105			AT 		%Q*			: BOOL;		// Move Forward for Box placing at pallet roller conv L4
+	xOut4106			AT 		%Q*			: BOOL;		// Move Forward for Empty & Load pallet transfer roller conv
+	xOut4107			AT 		%Q*			: BOOL;		// Move Forward for Empty & Loaded pallet turning conv 1
+	xOut4108			AT 		%Q*			: BOOL;		// Move Forward for Empty & Loaded pallet turning conv 2
+	xOut4109			AT 		%Q*			: BOOL;		// Move Forward for Loaded Pallet buffer roller conv before wrapping
+	xOut4110			AT 		%Q*			: BOOL;		// Move Forward for Loaded Pallet buffer roller conv. after wrapping
+	xOut4111			AT 		%Q*			: BOOL;		// Move Forward for Loaded pallet outfeed roller conv
+	xOut4112			AT 		%Q*			: BOOL;		//
+	xOut4113			AT 		%Q*			: BOOL;		//
+	xOut4114			AT 		%Q*			: BOOL;		// 
+	xOut4115			AT 		%Q*			: BOOL;		// Reset Error for All Inverter at P2, Relay
+	//Digital Output 16 Point EL2809
+	xOut4200			AT 		%Q*			: BOOL;		// Pneumatic Vertical Up
+	xOut4201			AT 		%Q*			: BOOL;		// Pneumatic Vertical Down
+	xOut4202			AT 		%Q*			: BOOL;		// Pneumatic Horizontal Rectract
+	xOut4203			AT 		%Q*			: BOOL;		// Pneumatic Horizontal Advanced
+	xOut4204			AT 		%Q*			: BOOL;		// 
+	xOut4205			AT 		%Q*			: BOOL;		// 
+	xOut4206			AT 		%Q*			: BOOL;		//	
+	xOut4207			AT 		%Q*			: BOOL;		//
+	xOut4208			AT 		%Q*			: BOOL;		//
+	xOut4209			AT 		%Q*			: BOOL;		//
+	xOut4210			AT 		%Q*			: BOOL;		//
+	xOut4211			AT 		%Q*			: BOOL;		//
+	xOut4212			AT 		%Q*			: BOOL;		//
+	xOut4213			AT 		%Q*			: BOOL;		//
+	xOut4214			AT 		%Q*			: BOOL;		//
+	xOut4215			AT 		%Q*			: BOOL;		// 
+	//Safety Output SO 4 Point EL2904
+	xsOut4300			AT 		%Q*			: BOOL;		// Enable STO Conveyor Channel 1
+	xsOut4302			AT 		%Q*			: BOOL;		// Enable STO Conveyor Channel 2
+	xsOut4304			AT 		%Q*			: BOOL;		// Enable Solenoid Door Coil Channel 1
+	xsOut4306			AT 		%Q*			: BOOL;		// Enable Solenoid Door Coil Channel 2
+	//Panel 3
+	//Digital Output 16 Point EL2809
+	xOut5000			AT 		%Q*			: BOOL;		// Move Forward for Empty pallet shuttle
+	xOut5001			AT 		%Q*			: BOOL;		// Move Forward for Load pallet shuttle
+	xOut5002			AT 		%Q*			: BOOL;		// Move Reverse for Load pallet shuttle
+	xOut5003			AT 		%Q*			: BOOL;		// Move Forward for Drive Shuttle
+	xOut5004			AT 		%Q*			: BOOL;		// Move Reverse for Drive Shuttle
+	xOut5005			AT 		%Q*			: BOOL;		// 
+	xOut5006			AT 		%Q*			: BOOL;		// 
+	xOut5007			AT 		%Q*			: BOOL;		// 
+	xOut5008			AT 		%Q*			: BOOL;		// 
+	xOut5009			AT 		%Q*			: BOOL;		// 
+	xOut5010			AT 		%Q*			: BOOL;		// 
+	xOut5011			AT 		%Q*			: BOOL;		// 
+	xOut5012			AT 		%Q*			: BOOL;		// 
+	xOut5013			AT 		%Q*			: BOOL;		// 
+	xOut5014			AT 		%Q*			: BOOL;		// 
+	xOut5015			AT 		%Q*			: BOOL;		// 
+	//Gripper Robot
+	//Digital Output 16 Point
+	xOut_0				AT 		%Q*			: BOOL;		// Pneumatic Gripper Claw Open Box
+	xOut_1				AT 		%Q*			: BOOL;		// Pneumatic Gripper Claw Close Box
+	xOut_2				AT 		%Q*			: BOOL;		// Pneumatic Gripper Clamping Open Box
+	xOut_3				AT 		%Q*			: BOOL;		// Pneumatic Gripper Clamping Close Box
+	xOut_4				AT 		%Q*			: BOOL;		// 
+	xOut_5				AT 		%Q*			: BOOL;		// 
+	xOut_6				AT 		%Q*			: BOOL;		// 
+	xOut_7				AT 		%Q*			: BOOL;		// 
+	xOut_8				AT 		%Q*			: BOOL;		// 
+	xOut_9				AT 		%Q*			: BOOL;		// 
+	xOut_10				AT 		%Q*			: BOOL;		// 
+	xOut_11				AT 		%Q*			: BOOL;		// 
+	xOut_12				AT 		%Q*			: BOOL;		// 
+	xOut_13				AT 		%Q*			: BOOL;		// 
+	xOut_14				AT 		%Q*			: BOOL;		// 
+	xOut_15				AT 		%Q*			: BOOL;		// 
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

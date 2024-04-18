@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <DUT Name="stPneumatic1" Id="{52a1411d-0f9e-4965-9f79-7c4c41578bd1}">
+    <Declaration><![CDATA[TYPE stPneumatic1 : //v1.0
+// UDT untuk merepresentasikan faceplate pneumatic valve 1 coil
+//	Changelog:
+	(* 
+	v1.0 [27.12.2021] Start development UDT - Fabrilian Asali	*)	
+
+
+STRUCT
+	Name: STRING;
+	
+	TestModeActive: BOOL;
+	iTest: BOOL;
+	
+	iSensorRetract: BOOL;
+	iSensorAdvanced: BOOL;
+	
+	oPneumatic: BOOL;
+	
+	Trigger_Retract: BOOL;
+	Trigger_Advanced: BOOL;
+	FB_DoneRetract: BOOL;
+	FB_DoneAdvanced: BOOL;
+	
+	Error_Retract: BOOL;
+	Error_Advanced: BOOL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

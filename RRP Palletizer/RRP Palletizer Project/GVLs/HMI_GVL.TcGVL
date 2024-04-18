@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <GVL Name="HMI_GVL" Id="{ed921c69-168a-458c-b61d-71bc389ee14d}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+//-----Box----
+	//Shorting
+	bTestModeEnableShorting	: BOOL;
+	bStartButtonShorting	: BOOL;
+	bStopButtonShorting		: BOOL;
+	bResetButtonShorting	: BOOL;
+
+//-----Pallet----
+	//Dispenser
+	bTestModeEnableDispenser: BOOL;
+	bStartButtonDispenser	: BOOL;
+	bStopButtonDispenser	: BOOL;
+	bResetButtonDispenser	: BOOL;
+	//Outfeed
+	bTestModeEnableOutfeed	: BOOL;
+	bStartButtonOutfeed		: BOOL;
+	bStopButtonOutfeed		: BOOL;
+	bResetButtonOutfeed		: BOOL;
+	//Shuttle
+	bTestModeEnableShuttle	: BOOL;
+	bStartButtonShuttle		: BOOL;
+	bStopButtonShuttle		: BOOL;
+	bResetButtonShuttle		: BOOL;
+
+//-----Robot----
+	//Infeed
+	bTestModeEnableInfeed	: BOOL;
+	bStartButtonInfeed		: BOOL;
+	bStopButtonInfeed		: BOOL;
+	bResetButtonInfeed		: BOOL;
+	//Placing_1
+	bTestModeEnablePlacing_1: BOOL;
+	bStartButtonPlacing_1	: BOOL;
+	bStopButtonPlacing_1	: BOOL;
+	bResetButtonPlacing_1	: BOOL;
+	//Placing_2
+	bTestModeEnablePlacing_2: BOOL;
+	bStartButtonPlacing_2	: BOOL;
+	bStopButtonPlacing_2	: BOOL;
+	bResetButtonPlacing_2	: BOOL;
+	//Placing_3
+	bTestModeEnablePlacing_3: BOOL;
+	bStartButtonPlacing_3	: BOOL;
+	bStopButtonPlacing_3	: BOOL;
+	bResetButtonPlacing_3	: BOOL;
+	//Placing_4
+	bTestModeEnablePlacing_4: BOOL;
+	bStartButtonPlacing_4	: BOOL;
+	bStopButtonPlacing_4	: BOOL;
+	bResetButtonPlacing_4	: BOOL;
+	//Robot
+	bTestModeEnableRobot	: BOOL;
+	bStartButtonRobot		: BOOL;
+	bStopButtonRobot		: BOOL;
+	bResetButtonRobot		: BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

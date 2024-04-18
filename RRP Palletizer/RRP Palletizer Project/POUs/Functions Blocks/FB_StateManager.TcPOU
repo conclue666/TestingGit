@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="FB_StateManager" Id="{d4970d8c-7b16-4e3a-a6c7-aa486df09b39}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_StateManager
+VAR_IN_OUT
+	stMachineCurrentState			: stMachineState;
+END_VAR
+VAR_INPUT
+	bButtonAcknowledge				: BOOL;		// User Input for Error Acknowledgement
+	bButtonReset					: BOOL;		// User Input for Reset 
+	bButtonRun						: BOOL;		// User Input for Starting Machine Running Sequence
+	bButtonStop						: BOOL;		// User Input for Stopping Machine Running Sequence
+	bFinishReset					: BOOL;
+	bFinishPowerUp					: BOOL;
+	bFinishHoming					: BOOL;
+	bMachineManualMode				: BOOL;		// Input(s) Required to Change Machine Operation Mode Into Manual Mode
+	bMachineAutoMode				: BOOL;		// Input(s) Required to Change Machine Operation Mode Into Auto Mode
+	bMachineError					: BOOL;		// Input(s) required to make the machine goes into error state
+END_VAR
+VAR_OUTPUT
+	bError							: BOOL;		
+	strErrorMsg						: STRING;	
+	strMachine						: STRING;
+END_VAR
+VAR
+	bFL_AutoModeActive				: BOOL;
+	bFL_ManualModeActive			: BOOL;
+	bInit							: BOOL;
+	StateIndex						: UINT;
+	bFL_Error						: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//=======FB_StateManager v1.0=======
+//Used UDTs: MachineState - v1.0
+//
+//Changelog: 
+//v1.0 [15.01.2021] Start Function block development - Fabrilian Asali
+//
+//===================================
+
+// FB initialization
+IF NOT bInit THEN
+	stMachineCurrentState.Error 		:= FALSE;
+	stMachineCurrentState.CheckSafety	:= FALSE;
+	stMachineCurrentState.Aborted		:= FALSE;
+	stMachineCurrentState.Initialize	:= FALSE;
+	stMachineCurrentState.CheckToRun	:= FALSE;
+	stMachineCurrentState.Ready			:= FALSE;
+	stMachineCurrentState.Running		:= FALSE;
+	stMachineCurrentState.Stopped		:= FALSE;
+	stMachineCurrentState.ManualMode	:= FALSE;
+	bFL_Error							:= FALSE;
+	StateIndex							:= 0;
+	bInit								:= TRUE;
+END_IF;
+
+//Error detection logic | reset machine state to error state
+IF bMachineError AND NOT bFL_Error THEN
+	StateIndex 	:= 0;
+	bFL_Error		:= TRUE;
+END_IF;
+
+//Special case reset trigger (direct from reset push button trigger)
+IF bButtonAcknowledge THEN
+	bError			:= FALSE;
+	strErrorMsg	:= '';
+END_IF;
+
+//Auto Manual Mode Selection Logic
+IF bMachineAutoMode AND NOT bMachineManualMode THEN
+	bFL_AutoModeActive 							:= TRUE;
+	bFL_ManualModeActive					 	:= FALSE;
+ELSIF NOT bMachineAutoMode AND bMachineManualMode THEN
+	bFL_ManualModeActive					 	:= TRUE;
+	bFL_AutoModeActive 							:= FALSE;
+ELSE
+	bError 										:= TRUE;
+	strErrorMsg 								:= 'Operation Mode Change Detected.';
+	bFL_AutoModeActive 							:= FALSE;
+	bFL_ManualModeActive						:= FALSE;
+END_IF;
+
+CASE StateIndex OF
+	0: //Error State
+		stMachineCurrentState.Error 		:= TRUE;
+		stMachineCurrentState.CheckSafety	:= FALSE;
+		stMachineCurrentState.Aborted		:= FALSE;
+		stMachineCurrentState.Initialize	:= FALSE;
+		stMachineCurrentState.CheckToRun	:= FALSE;
+		stMachineCurrentState.Ready			:= FALSE;
+		stMachineCurrentState.Running		:= FALSE;
+		stMachineCurrentState.Stopped		:= FALSE;
+		stMachineCurrentState.ManualMode	:= FALSE;
+		strMachine							:= 'Error';
+		IF bButtonAcknowledge THEN		
+			StateIndex := 10;
+		END_IF;
+	
+	10: //CheckSafety State
+		stMachineCurrentState.Error 		:= FALSE;
+		stMachineCurrentState.CheckSafety	:= TRUE;
+		stMachineCurrentState.Aborted		:= FALSE;
+		stMachineCurrentState.Initialize	:= FALSE;
+		stMachineCurrentState.CheckToRun	:= FALSE;
+		stMachineCurrentState.Ready			:= FALSE;
+		stMachineCurrentState.Running		:= FALSE;
+		stMachineCurrentState.Stopped		:= FALSE;
+		stMachineCurrentState.ManualMode	:= FALSE;
+		strMachine							:= 'Safety';
+		IF NOT bMachineError THEN		
+			StateIndex 	:= 20;
+			bFL_Error		:= FALSE;
+		ELSE
+			bError 			:= TRUE;
+			strErrorMsg := 'Machine Check Safety Failed';
+			StateIndex	:= 0;
+		END_IF;	
+
+	20: //Aborted State | auto manual mode branching
+		stMachineCurrentState.Error 		:= FALSE;
+		stMachineCurrentState.CheckSafety	:= FALSE;
+		stMachineCurrentState.Aborted		:= TRUE;
+		stMachineCurrentState.Initialize	:= FALSE;
+		stMachineCurrentState.CheckToRun	:= FALSE;
+		stMachineCurrentState.Ready			:= FALSE;
+		stMachineCurrentState.Running		:= FALSE;
+		stMachineCurrentState.Stopped		:= FALSE;
+		stMachineCurrentState.ManualMode	:= FALSE;
+		strMachine							:= 'Aborted';		
+		IF bFL_AutoModeActive AND bButtonReset THEN
+			StateIndex := 30;
+		ELSIF bFL_ManualModeActive THEN
+			StateIndex := 1000;
+		END_IF;
+
+	30: //Initialize State
+		stMachineCurrentState.Error 		:= FALSE;
+		stMachineCurrentState.CheckSafety	:= FALSE;
+		stMachineCurrentState.Aborted		:= FALSE;
+		stMachineCurrentState.Initialize	:= TRUE;
+		stMachineCurrentState.CheckToRun	:= FALSE;
+		stMachineCurrentState.Ready			:= FALSE;
+		stMachineCurrentState.Running		:= FALSE;
+		stMachineCurrentState.Stopped		:= FALSE;
+		stMachineCurrentState.ManualMode	:= FALSE;
+		strMachine							:= 'Initialize';				
+		IF bFinishReset AND bFinishPowerUp THEN
+			StateIndex := 40;
+		END_IF;
+		
+	40: //CheckToRun State
+		stMachineCurrentState.Error 		:= FALSE;
+		stMachineCurrentState.CheckSafety	:= FALSE;
+		stMachineCurrentState.Aborted		:= FALSE;
+		stMachineCurrentState.Initialize	:= FALSE;
+		stMachineCurrentState.CheckToRun	:= TRUE;
+		stMachineCurrentState.Ready			:= FALSE;
+		stMachineCurrentState.Running		:= FALSE;
+		stMachineCurrentState.Stopped		:= FALSE;
+		stMachineCurrentState.ManualMode	:= FALSE;
+		strMachine							:= 'Check Run';		
+		IF bFinishHoming THEN
+			StateIndex := 50;
+		END_IF;
+		
+	50: //Ready State
+		stMachineCurrentState.Error 		:= FALSE;
+		stMachineCurrentState.CheckSafety	:= FALSE;
+		stMachineCurrentState.Aborted		:= FALSE;
+		stMachineCurrentState.Initialize	:= FALSE;
+		stMachineCurrentState.CheckToRun	:= FALSE;
+		stMachineCurrentState.Ready			:= TRUE;
+		stMachineCurrentState.Running		:= FALSE;
+		stMachineCurrentState.Stopped		:= FALSE;
+		stMachineCurrentState.ManualMode	:= FALSE;
+		strMachine							:= 'Ready';				
+		IF bButtonRun THEN
+			StateIndex := 60;
+		END_IF;
+		
+	60: //Running State
+		stMachineCurrentState.Error 		:= FALSE;
+		stMachineCurrentState.CheckSafety	:= FALSE;
+		stMachineCurrentState.Aborted		:= FALSE;
+		stMachineCurrentState.Initialize	:= FALSE;
+		stMachineCurrentState.CheckToRun	:= FALSE;
+		stMachineCurrentState.Ready			:= FALSE;
+		stMachineCurrentState.Running		:= TRUE;
+		stMachineCurrentState.Stopped		:= FALSE;
+		stMachineCurrentState.ManualMode	:= FALSE;
+		strMachine							:= 'Running';		
+		IF bButtonStop THEN
+			StateIndex := 70;
+		END_IF;
+		
+	70: //Stopped State
+		stMachineCurrentState.Error 		:= FALSE;
+		stMachineCurrentState.CheckSafety	:= FALSE;
+		stMachineCurrentState.Aborted		:= FALSE;
+		stMachineCurrentState.Initialize	:= FALSE;
+		stMachineCurrentState.CheckToRun	:= FALSE;
+		stMachineCurrentState.Ready			:= FALSE;
+		stMachineCurrentState.Running		:= FALSE;
+		stMachineCurrentState.Stopped		:= TRUE;
+		stMachineCurrentState.ManualMode	:= FALSE;
+		strMachine							:= 'Stopped';
+		IF bButtonRun THEN
+			StateIndex := 60;
+		END_IF;
+		
+	1000: //Manual mode operation state
+		stMachineCurrentState.Error 		:= FALSE;
+		stMachineCurrentState.CheckSafety	:= FALSE;
+		stMachineCurrentState.Aborted		:= FALSE;
+		stMachineCurrentState.Initialize	:= FALSE;
+		stMachineCurrentState.CheckToRun	:= FALSE;
+		stMachineCurrentState.Ready			:= FALSE;
+		stMachineCurrentState.Running		:= FALSE;
+		stMachineCurrentState.Stopped		:= FALSE;
+		stMachineCurrentState.ManualMode	:= TRUE;
+		strMachine							:= 'Manual';
+		IF bFL_AutoModeActive THEN
+			StateIndex := 0;
+		END_IF
+END_CASE;]]></ST>
+    </Implementation>
+    <LineIds Name="FB_StateManager">
+      <LineId Id="33" Count="191" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

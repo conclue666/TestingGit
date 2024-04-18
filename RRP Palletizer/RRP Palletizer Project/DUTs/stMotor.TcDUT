@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <DUT Name="stMotor" Id="{ef5af004-a7f1-4fad-baa0-4649d059c060}">
+    <Declaration><![CDATA[TYPE stMotor :	
+STRUCT
+	Name				: STRING;
+	TestModeActive		: BOOL;
+	UseReverse			: BOOL;
+	iTestForward		: BOOL;
+	iTestReverse		: BOOL;
+	oMoveForward		: BOOL;
+	oMoveReverse		: BOOL;
+	oResetError			: BOOL;
+	Status_MotorRunning	: BOOL;
+	Status_Error		: BOOL;
+	ErrorID				: UINT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

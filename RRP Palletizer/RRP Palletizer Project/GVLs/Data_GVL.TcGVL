@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <GVL Name="Data_GVL" Id="{1e50c9ce-ab3c-484e-8454-4e46a10195b2}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	
+//-----Box----	
+	//Shorting
+	StateMachineShorting			: stMachineState;
+	StateMachineShorting_Error		: BOOL;
+	StateMachineShorting_ErrorMsg	: STRING;
+	StateMachineShorting_stsMachine	: STRING;
+	bFL_StartShorting				: BOOL;
+	bFL_StopShorting				: BOOL;
+	bFL_ResetShorting				: BOOL;
+	bFL_AckShorting					: BOOL;
+	bFL_MachineErrorShorting		: BOOL;
+	bFL_AutoManuaModeShorting		: BOOL;
+	
+//-----Pallet----		
+	//Dispenser
+	StateMachineDispenser			: stMachineState;
+	StateMachineDispenser_Error		: BOOL;
+	StateMachineDispenser_ErrorMsg	: STRING;
+	StateMachineDispenser_stsMachine: STRING;
+	bFL_StartDispenser				: BOOL;
+	bFL_StopDispenser				: BOOL;
+	bFL_ResetDispenser				: BOOL;
+	bFL_AckDispenser				: BOOL;
+	bFL_MachineErrorDispenser		: BOOL;
+	bFL_AutoManuaModeDispenser		: BOOL;
+	//Shuttle
+	StateMachineShuttle				: stMachineState;
+	StateMachineShuttle_Error		: BOOL;
+	StateMachineShuttle_ErrorMsg	: STRING;
+	StateMachineShuttle_stsMachine	: STRING;
+	bFL_StartShuttle				: BOOL;
+	bFL_StopShuttle					: BOOL;
+	bFL_ResetShuttle				: BOOL;
+	bFL_AckShuttle					: BOOL;
+	bFL_MachineErrorShuttle			: BOOL;
+	bFL_AutoManuaModeShuttle		: BOOL;
+	//Outfeed
+	StateMachineOutfeed				: stMachineState;
+	StateMachineOutfeed_Error		: BOOL;
+	StateMachineOutfeed_ErrorMsg	: STRING;
+	StateMachineOutfeed_stsMachine	: STRING;
+	bFL_StartOutfeed				: BOOL;
+	bFL_StopOutfeed					: BOOL;
+	bFL_ResetOutfeed				: BOOL;
+	bFL_AckOutfeed					: BOOL;
+	bFL_MachineErrorOutfeed			: BOOL;
+	bFL_AutoManuaModeOutfeed		: BOOL;
+	
+//-----Robot----		
+	//Infeed
+	StateMachineInfeed				: stMachineState;
+	StateMachineInfeed_Error		: BOOL;
+	StateMachineInfeed_ErrorMsg		: STRING;
+	StateMachineInfeed_stsMachine	: STRING;
+	bFL_StartInfeed					: BOOL;
+	bFL_StopInfeed					: BOOL;
+	bFL_ResetInfeed					: BOOL;
+	bFL_AckInfeed					: BOOL;
+	bFL_MachineErrorInfeed			: BOOL;
+	bFL_AutoManuaModeInfeed			: BOOL;	
+	//Placing_1
+	StateMachinePlacing_1			: stMachineState;
+	StateMachinePlacing_1_Error		: BOOL;
+	StateMachinePlacing_1_ErrorMsg	: STRING;
+	StateMachinePlacing_1_stsMachine: STRING;
+	bFL_StartPlacing_1				: BOOL;
+	bFL_StopPlacing_1				: BOOL;
+	bFL_ResetPlacing_1				: BOOL;
+	bFL_AckPlacing_1				: BOOL;
+	bFL_MachineErrorPlacing_1		: BOOL;
+	bFL_AutoManuaModePlacing_1		: BOOL;
+	//Placing_2
+	StateMachinePlacing_2			: stMachineState;
+	StateMachinePlacing_2_Error		: BOOL;
+	StateMachinePlacing_2_ErrorMsg	: STRING;
+	StateMachinePlacing_2_stsMachine: STRING;
+	bFL_StartPlacing_2				: BOOL;
+	bFL_StopPlacing_2				: BOOL;
+	bFL_ResetPlacing_2				: BOOL;
+	bFL_AckPlacing_2				: BOOL;
+	bFL_MachineErrorPlacing_2		: BOOL;
+	bFL_AutoManuaModePlacing_2		: BOOL;
+	//Placing_3
+	StateMachinePlacing_3			: stMachineState;
+	StateMachinePlacing_3_Error		: BOOL;
+	StateMachinePlacing_3_ErrorMsg	: STRING;
+	StateMachinePlacing_3_stsMachine: STRING;
+	bFL_StartPlacing_3				: BOOL;
+	bFL_StopPlacing_3				: BOOL;
+	bFL_ResetPlacing_3				: BOOL;
+	bFL_AckPlacing_3				: BOOL;
+	bFL_MachineErrorPlacing_3		: BOOL;
+	bFL_AutoManuaModePlacing_3		: BOOL;
+	//Placing_4
+	StateMachinePlacing_4			: stMachineState;
+	StateMachinePlacing_4_Error		: BOOL;
+	StateMachinePlacing_4_ErrorMsg	: STRING;
+	StateMachinePlacing_4_stsMachine: STRING;
+	bFL_StartPlacing_4				: BOOL;
+	bFL_StopPlacing_4				: BOOL;
+	bFL_ResetPlacing_4				: BOOL;
+	bFL_AckPlacing_4				: BOOL;
+	bFL_MachineErrorPlacing_4		: BOOL;
+	bFL_AutoManuaModePlacing_4		: BOOL;
+	//Robot
+	StateMachineRobot				: stMachineState;
+	StateMachineRobot_Error			: BOOL;
+	StateMachineRobot_ErrorMsg		: STRING;
+	StateMachineRobot_stsMachine	: STRING;
+	bFL_StartRobot		 			: BOOL;
+	bFL_StopRobot					: BOOL;
+	bFL_ResetRobot					: BOOL;
+	bFL_AckRobot					: BOOL;
+	bFL_MachineErrorRobot			: BOOL;
+	bFL_AutoManuaModeRobot			: BOOL;
+	
+	bStartButton 					: BOOL;
+	bStopButton 					: BOOL;
+	bResetButton 					: BOOL;
+	bAckButton 						: BOOL;
+	bEmergencyStop 					: BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

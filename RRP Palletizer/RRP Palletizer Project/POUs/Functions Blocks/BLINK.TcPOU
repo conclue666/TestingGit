@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="BLINK" Id="{50a858f9-0388-474e-960e-eecb12899316}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK BLINK
+VAR_INPUT
+	F_Enable: BOOL;
+	TimeHigh: TIME:=T#1S;
+	TimeLow: TIME:=T#1s;
+END_VAR
+VAR_OUTPUT
+	Output: BOOL;
+END_VAR
+VAR
+	SeqIndex: INT;
+	Timer: TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF F_Enable THEN
+	CASE SeqIndex OF
+		0:
+			Output:=TRUE;
+			Timer(IN:=TRUE,PT:=TimeHigh);
+			IF Timer.Q THEN
+				Timer(IN:=FALSE);
+				SeqIndex:=10;
+			END_IF
+		10:
+			Output:=FALSE;
+			Timer(IN:=TRUE,PT:=TimeLow);
+			IF Timer.Q THEN
+				Timer(IN:=FALSE);
+				SeqIndex:=0;
+			END_IF
+	END_CASE
+ELSE
+	SeqIndex:=0;
+	Timer(IN:=FALSE);
+	Output:=FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="BLINK">
+      <LineId Id="3" Count="20" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

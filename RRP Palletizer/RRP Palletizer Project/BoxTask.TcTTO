@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <Task Name="BoxTask" Id="{03fb3785-c856-4fc3-8375-20753874ff99}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>10000</CycleTime>
+    <Priority>21</Priority>
+    <PouCall>
+      <Name>UN01_StateMachineBox</Name>
+    </PouCall>
+    <PouCall>
+      <Name>EM01_BoxShorting</Name>
+    </PouCall>
+    <TaskFBGuid>{3fbb160c-52af-4ec6-8529-427f4c7a556a}</TaskFBGuid>
+    <Fb_init>{c582e152-dc85-4b31-ad00-64f6bd0c1746}</Fb_init>
+    <Fb_exit>{f97d501f-c474-4164-b47e-1168aa2c65ae}</Fb_exit>
+    <CycleUpdate>{43d49c40-e8a3-4ba1-abd3-63b428e66bfe}</CycleUpdate>
+    <PostCycleUpdate>{1bad3c58-0694-46ce-b03e-689df8849f7c}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>
